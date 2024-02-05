@@ -1,0 +1,4 @@
+{
+    "key":  "Path to your key file. If you use apache2, you can use the same key as your apache2 server",
+    "cert": "Path to your cert file. This is normally in the directory: /etc/letsencrypt/live/yourdomain.com/" 
+}

@@ -1,0 +1,8 @@
+{
+    "server": {
+        "connection": "http",
+        "host": "localhost",
+        "port": 3000
+    },
+    "beQuiet": true
+}

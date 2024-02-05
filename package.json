@@ -1,0 +1,43 @@
+{
+  "name": "gts",
+  "version": "1.0.0",
+  "description": "Guess the Song",
+  "main": "src/index.js",
+  "scripts": {
+    "test": "mocha",
+    "setup_db": "node setups/rethinkdb.js",
+    "purge_db": "node setups/purgedb.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/thaemisch/spotify-gts.git"
+  },
+  "keywords": [
+    "GTS"
+  ],
+  "author": "Tim, Julian",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/thaemisch/spotify-gts/issues"
+  },
+  "homepage": "https://github.com/thaemisch/spotify-gts#readme",
+  "dependencies": {
+    "axios": "^1.6.1",
+    "fastest-levenshtein": "^1.0.16",
+    "rethinkdbdash": "^2.3.31",
+    "socket.io": "^4.7.2"
+  },
+  "optionalDependencies": {
+    "bufferutil": "^4.0.8",
+    "utf-8-validate": "^5.0.10"
+  },
+  "devDependencies": {
+    "chai": "^4.3.10",
+    "eslint": "^8.53.0",
+    "eslint-plugin-react": "^7.33.2",
+    "mocha": "^10.2.0",
+    "seedrandom": "^3.0.5",
+    "sinon": "^17.0.1",
+    "socket.io-client": "^4.7.2"
+  }
+}
