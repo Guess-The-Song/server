@@ -1,4 +1,5 @@
 {
-    "secret": "YourSecretKey",
-    "id": "YourClientID"
+  "secret": "YourSecretKey",
+  "id": "YourClientID",
+  "redirectUri": "YourRedirectUri"
 }

@@ -2,7 +2,7 @@ const axios = require('axios');
 const spotifyConf = require('../../config/spotify.json');
 const extra = require('../extra.js');
 
-const redirectUri = 'https://gts.thaemisch.com/auth'; // new: https://gts.thaemisch.com/auth, old: https://gts.thaemisch.com/ 
+const redirectUri = spotifyConf.redirectUri; // new: https://gts.thaemisch.com/auth, old: https://gts.thaemisch.com/ 
 const clientId = spotifyConf.id;
 const clientSecret = spotifyConf.secret;
 
