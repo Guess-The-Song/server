@@ -12,7 +12,12 @@ const LobbyLogic = require('./lobby/socketLobbyLogic.js');
 let allowNoHttps = true;
 let exitOnIncorrectProvider = true;
 let exitOnIncorrectGamemode = true;
+
 let server, ioServer, r;
+const httpsConfig = require('../config/https.json');
+const keyLocation = httpsConfig.key;
+const certLocation = httpsConfig.cert;
+
 const lobbys = new Map(); // Map of all lobbys (key: lobby id, value: lobby object), but also used to transfer data between lobby and socketLobbyLogic
 
 // TODO: Make start pseudo Singelton
@@ -166,10 +171,9 @@ function serverSetup() {
     // Server setup
     let tmpServer;
     try{
-        const httpsConfig = require('../config/https.json');
         const options = {
-            key: fs.readFileSync(httpsConfig.key),
-            cert: fs.readFileSync(httpsConfig.cert)
+            key: fs.readFileSync(keyLocation),
+            cert: fs.readFileSync(certLocation)
         };
         tmpServer = https.createServer(options);
     } catch (err) {
@@ -302,6 +306,30 @@ function testGamemode(instance, GameMode, file) {
     console.log('Loaded gamemode ' + instance.name);
     return true;
 }
+
+// Refresh certificates for HTTPS
+function refreshCertificates() {
+    try {
+        const options = {
+            key: fs.readFileSync(keyLocation),
+            cert: fs.readFileSync(certLocation)
+        };
+        server.setSecureContext(options);
+        console.log('Certificates refreshed');
+    } catch {
+        console.error('Could not refresh certificates');
+    }
+}
+
+fs.watchFile(keyLocation, () => {
+    console.log('SSL key changed, trying to refresh');
+    refreshCertificates();
+});
+
+fs.watchFile(certLocation, () => {
+    console.log('SSL cert changed, trying to refresh');
+    refreshCertificates();
+});
 
 
 // Testing stuff
